@@ -1,13 +1,14 @@
 import React from 'react'
 import { RestaurantCardType } from '../page'
 import Link from 'next/link';
+import Price from './Price';
  interface Props {
   restaurant:RestaurantCardType;
  }
 export default function ResraurantCard({restaurant}:Props) {
   return (
-   <Link href="/restaurant/milestone-grill">
     <div className="w-64 h-72 m-3 rounded overflow-hidden border cursor-pointer">
+      <Link href={`/restaurant/${restaurant.slug}`}>
     <img
       src={restaurant.main_image}
       alt=""
@@ -20,13 +21,13 @@ export default function ResraurantCard({restaurant}:Props) {
         <p className="ml-2">77 reviews</p>
       </div>
       <div className="flex text-reg font-light capitalize">
-        <p className=" mr-3">Mexican</p>
-        <p className="mr-3">{restaurant.price}</p>
-        <p>Toronto</p>
+        <p className=" mr-3">{restaurant.cuisine.name}</p>
+        <Price price={restaurant.price}/> 
+        <p>{restaurant.location.name}</p>
       </div>
       <p className="text-sm mt-1 font-bold">Booked 3 times today</p>
     </div>
-  </div>
    </Link>
+  </div>
   )
 }
