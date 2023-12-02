@@ -7,7 +7,7 @@ export interface RestaurantCardType {
   id: number;
   name: string;
   main_image: string;
-  slug:string;
+  slug: string;
   cuisine: Cuisine;
   location: Location;
   price: PRICE;
@@ -20,7 +20,7 @@ const fetchResults = async (): Promise<RestaurantCardType[]> => {
       id: true,
       name: true,
       main_image: true,
-      slug:true,
+      slug: true,
       cuisine: true,
       location: true,
       price: true,
@@ -36,10 +36,9 @@ export default async function Home() {
       <Header />
 
       <div className="py-3 px-36 mt-10  flex flex-wrap  justify-center">
-          {restaurantRes.map((restaurant) => (
-            <RestaurantCard   restaurant={restaurant}/>
-           ))} 
-          {/* Corrected href value */}
+        {restaurantRes.map((restaurant) => (
+          <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+        ))}
       </div>
     </main>
   );
